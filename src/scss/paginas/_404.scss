@@ -1,0 +1,18 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.pagina_404{
+    &__contenedor{text-align: center;}
+
+    &__enlace{
+        color: v.$azul;
+        border: 1px solid v.$azul;
+    padding: .5rem 1rem .5rem 1rem;
+    border-radius: .5rem;
+
+        &:hover{
+          background-color: lighten(v.$azul, 20%);  
+          color: v.$blanco;
+        }
+    }
+}

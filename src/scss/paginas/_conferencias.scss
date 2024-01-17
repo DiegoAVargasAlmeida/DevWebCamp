@@ -1,0 +1,146 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+.agenda {
+    padding: 5rem 0;
+    @include m.contenedor;
+}
+
+.eventos {
+    $modificador:&;
+    &__heading{
+        color: v.$azul;
+        margin: 5rem 0;
+        font-size: clamp(2rem, -0.8rem + 8vw , 6rem);
+        text-align: left;
+    }
+
+    &__fecha{
+        color: v.$gris;
+        margin: 3rem 0 1 rem 0;
+    }
+
+
+    &--workshops {
+
+        #{$modificador}__heading {
+            color: v.$secundario;
+        }
+
+        .evento__informacion{
+
+            background-color: v.$secundario;
+
+            &:hover{
+                cursor: pointer;
+                background-color: darken(v.$secundario, 20);
+            }
+        }
+    }
+
+
+    &__listado{
+        @include m.grid(4, 2rem);
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev{
+        color: rgba(v.$blanco, .5);
+    }
+}
+
+.evento{
+    @include m.contenedor;
+    
+
+    &__informacion{
+    background-color: v.$azul;
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: background-color 230ms ;
+    &:hover{
+        background-color: darken(v.$azul, 20%);
+        cursor: pointer;
+    }
+    
+    }   
+
+    &__descripcion{
+
+        font-size: 1.6rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        @include m.tablet{
+            -webkit-line-clamp: 3;
+            
+        }
+    margin: 1.5rem;
+    color: v.$blanco;
+    text-align: justify;
+ 
+    }
+
+    &__nombre{
+        color: v.$blanco;
+        margin: 0;
+        font-size: 2.3rem;
+        text-align: center;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+       
+    }
+    
+    &__hora{
+        font-weight:v.$bold;
+    }
+
+    &__autor-info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+    &__imagen-autor{
+        width: 5rem;
+        background-color: v.$blanco;
+        border-radius: 50%;
+            }
+
+    &__autor-nombre{
+        font-weight: v.$bold;
+        color: v.$blanco;
+    }
+
+    &__agregar{
+        @include m.boton(v.$blanco, v.$negro);
+        margin-top: 1rem;
+
+        &:disabled{
+            opacity: .5;
+            cursor: not-allowed;
+        }
+    }
+
+    &__enlace{
+        position: absolute;
+      
+        width: 95%;
+        height: 70%;
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+
+        &:hover{
+            
+        cursor: pointer;
+        }
+    }
+
+    
+}
